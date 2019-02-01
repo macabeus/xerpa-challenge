@@ -11,6 +11,54 @@ defmodule Xerpa.Coordinate do
     %Coordinate{x: x, y: y, direction: direction}
   end
 
+  def move_forward(%Coordinate{x: x, y: y, direction: direction} = coordinate) do
+    case direction do
+      :north ->
+        %{coordinate | y: y + 1}
+
+      :south ->
+        %{coordinate | y: y - 1}
+
+      :east ->
+        %{coordinate | x: x + 1}
+
+      :west ->
+        %{coordinate | x: x - 1}
+    end
+  end
+
+  def spin_left(%Coordinate{direction: direction} = coordinate) do
+    case direction do
+      :north ->
+        %{coordinate | direction: :west}
+
+      :south ->
+        %{coordinate | direction: :east}
+
+      :east ->
+        %{coordinate | direction: :north}
+
+      :west ->
+        %{coordinate | direction: :south}
+    end
+  end
+
+  def spin_right(%Coordinate{direction: direction} = coordinate) do
+    case direction do
+      :north ->
+        %{coordinate | direction: :east}
+
+      :south ->
+        %{coordinate | direction: :west}
+
+      :east ->
+        %{coordinate | direction: :south}
+
+      :west ->
+        %{coordinate | direction: :north}
+    end
+  end
+
   # Privates
 
   defp validate_direction!(direction) do
