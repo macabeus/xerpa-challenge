@@ -5,8 +5,8 @@ defmodule Xerpa.DynamicSupervisor do
     DynamicSupervisor.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
-  def start_child(name, coordinate) do
-    spec = {Xerpa.Robot, [name: name, coordinate: coordinate]}
+  def start_child(name, coordinate, field) do
+    spec = {Xerpa.Robot, [name: name, coordinate: coordinate, field: field]}
     DynamicSupervisor.start_child(__MODULE__, spec)
   end
 
