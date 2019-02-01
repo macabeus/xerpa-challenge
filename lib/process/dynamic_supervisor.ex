@@ -5,6 +5,11 @@ defmodule Xerpa.DynamicSupervisor do
     DynamicSupervisor.start_link(__MODULE__, :ok, name: __MODULE__)
   end
 
+  def start_child(name) do
+    spec = {Xerpa.Robot, name}
+    DynamicSupervisor.start_child(__MODULE__, spec)
+  end
+
   def init(:ok) do
     DynamicSupervisor.init(strategy: :one_for_one)
   end
