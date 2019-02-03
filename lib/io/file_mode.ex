@@ -50,6 +50,7 @@ defmodule Xerpa.FileMode do
     IO.puts("Error on line #{count * 2}: don't have the robot actions on next line")
   end
 
-  defp robot_input(_field, _count, []) do
+  defp robot_input(field, _count, []) do
+    Output.say_field(field)
   end
 end

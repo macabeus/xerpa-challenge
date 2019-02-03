@@ -26,7 +26,7 @@ mix
 ```
 
 Então, ele pedirá para definir o X e Y máximo do campo, em seguida, as coordenadas iniciais do robô, e por fim, as ações.
-Então a aplicação retornará as coordenadas finais do robô.
+Então a aplicação retornará as coordenadas finais do robô e o mapa do campo.
 
 Exemplo:
 
@@ -35,6 +35,11 @@ Field: 3 4
 Coordinate: 1 0 N
 Actions: MMRML
 2 2 N
+....
+....
+..N.
+....
+....
 ```
 
 Se por acaso uma ação tentar fazer o robô ultrapassar os limites do campo, ela simplesmente será ignorada. Por exemplo:
@@ -44,6 +49,9 @@ Field: 2 2
 Coordinate: 0 0 N
 Actions: MMMMMMMMM
 0 2 N
+N..
+...
+...
 ```
 
 ## Executando no modo "file"
@@ -80,6 +88,12 @@ O retorno serão as coordenadas finais dos robôs, na mesma ordem que foram defi
 ```
 1 3 N
 5 1 E
+......
+......
+.N....
+......
+.....E
+......
 ```
 
 O primeiro robô efetuará todo o percurso dele, e em seguida, o segundo, e assim por diante. Fique atento a isso, pois não é possível que dois robôs ocupem o mesmo espaço, por exemplo:
@@ -97,6 +111,12 @@ retorna:
 ```
 0 2 N
 0 3 S
+......
+......
+S.....
+N.....
+......
+......
 ```
 
 ## Como rodar os testes

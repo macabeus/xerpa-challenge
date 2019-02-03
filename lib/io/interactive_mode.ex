@@ -23,6 +23,8 @@ defmodule Xerpa.InteractiveMode do
       Enum.each(actions, &Robot.move(:robot, &1))
 
       Output.say_robot(:robot)
+
+      Output.say_field(field)
     rescue
       e in Xerpa.InvalidUserInput -> IO.puts(e.message)
     end
