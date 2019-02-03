@@ -15,22 +15,56 @@ defmodule XerpaTest.Field do
     end
   end
 
-  test "should check when the coordinate is valid" do
+  test "should check when the coordinate within the limits" do
     coordinate = Coordinate.new(1, 3, :north)
 
     result =
       Field.new(2, 3)
-      |> Field.is_valid_coordinate(coordinate)
+      |> Field.coordinated_within_the_limits?(coordinate)
 
     assert true == result
   end
 
-  test "should check when the coordinate is invalid" do
+  test "should check when the coordinate is not within the limits" do
     coordinate = Coordinate.new(3, 3, :north)
 
     result =
       Field.new(2, 3)
-      |> Field.is_valid_coordinate(coordinate)
+      |> Field.coordinated_within_the_limits?(coordinate)
+
+    assert false == result
+  end
+
+  test "should check that there is robot in coordinate" do
+    list_robots = [
+      %{
+        coordinate: %Coordinate{direction: :north, x: 2, y: 3}
+      },
+      %{
+        coordinate: %Coordinate{direction: :north, x: 3, y: 3}
+      }
+    ]
+
+    coordinate = Coordinate.new(3, 3, :north)
+
+    result = Field.exists_robot_in_this_coordinate?(list_robots, coordinate)
+
+    assert true == result
+  end
+
+  test "should check that there is no robot in coordinate" do
+    list_robots = [
+      %{
+        coordinate: %Coordinate{direction: :north, x: 2, y: 3}
+      },
+      %{
+        coordinate: %Coordinate{direction: :north, x: 3, y: 2}
+      }
+    ]
+
+    coordinate = Coordinate.new(3, 3, :north)
+
+    result = Field.exists_robot_in_this_coordinate?(list_robots, coordinate)
 
     assert false == result
   end

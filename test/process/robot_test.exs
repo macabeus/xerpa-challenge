@@ -5,6 +5,8 @@ defmodule XerpaTest.Robot do
   alias Xerpa.Robot
 
   setup do
+    Xerpa.DynamicSupervisor.start_link()
+
     blank_coordinate = Coordinate.new(0, 0, :north)
     field = Field.new(2, 2)
 

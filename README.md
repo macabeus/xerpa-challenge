@@ -82,7 +82,7 @@ O retorno serão as coordenadas finais dos robôs, na mesma ordem que foram defi
 5 1 E
 ```
 
-Milagrosamente, é possível que dois robôs ocupem o mesmo espaço, por exemplo:
+O primeiro robô efetuará todo o percurso dele, e em seguida, o segundo, e assim por diante. Fique atento a isso, pois não é possível que dois robôs ocupem o mesmo espaço, por exemplo:
 
 ```
 5 5
@@ -96,7 +96,7 @@ retorna:
 
 ```
 0 2 N
-0 2 S
+0 3 S
 ```
 
 ## Como rodar os testes

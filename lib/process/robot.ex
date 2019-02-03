@@ -27,7 +27,7 @@ defmodule Xerpa.Robot do
   def handle_call(:forward, _from, %{coordinate: coordinate, field: field} = state) do
     new_coordinate = Coordinate.move_forward(coordinate)
 
-    case Field.is_valid_coordinate(field, new_coordinate) do
+    case Field.is_valid_coordinate?(field, new_coordinate, self()) do
       true ->
         new_state = %{state | coordinate: new_coordinate}
 
